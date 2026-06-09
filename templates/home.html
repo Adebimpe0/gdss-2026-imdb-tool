@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>WELCOME TO ABDULQUYUM SPACE</h1>
-    <p>Welcome to the AI-Driven Image-to-Item Master Data Tool!</p>
-    <a href="/extract">Extract Data from Image</a>
-    <a href="/extracted">View Extracted Data</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home - IMDB Tool{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-3">AI-Driven Image-to-Item Master Data Tool</h1>
+    <p class="lead">Upload product images and extract structured master data automatically.</p>
+    <div class="d-flex justify-content-center gap-2 mt-4">
+        <a href="/extract" class="btn btn-primary">Extract Data</a>
+        <a href="/extracted" class="btn btn-outline-secondary">View Extracted</a>
+    </div>
+</div>
+{% endblock %}

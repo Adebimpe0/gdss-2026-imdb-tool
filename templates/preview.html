@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Preview & Edit - IMDB Tool{% endblock %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Preview & Edit Extracted Data</h4>
+          <form action="/export" method="POST">
+            {% for field, value in data.items() %}
+            <div class="mb-3">
+              <label class="form-label fw-bold">{{ field }}</label>
+              <input type="text" class="form-control" name="{{ field }}" value="{{ value }}">
+            </div>
+            {% endfor %}
+            <div class="d-flex gap-2">
+              <button type="submit" name="format" value="csv" class="btn btn-success w-50">Export as CSV</button>
+              <button type="submit" name="format" value="excel" class="btn btn-primary w-50">Export as Excel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
