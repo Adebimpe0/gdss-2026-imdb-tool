@@ -7,7 +7,10 @@ import pandas as pd
 import time
 
 load_dotenv()
-REQUEST_DELAY_SECONDS = int(os.getenv("REQUEST_DELAY_SECONDS", "25"))
+try:
+    REQUEST_DELAY_SECONDS = int(os.getenv("REQUEST_DELAY_SECONDS", "25"))
+except ValueError as exc:
+    raise ValueError("REQUEST_DELAY_SECONDS must be an integer value.") from exc
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 

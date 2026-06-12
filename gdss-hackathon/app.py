@@ -7,10 +7,11 @@ from export import export_to_csv, export_to_excel
 import os
 import io
 from uuid import uuid4
+from PIL import Image, UnidentifiedImageError
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = os.path.join(app.root_path, 'uploads')
 ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png'}
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -35,6 +36,11 @@ def extract():
     extension = extension.lower()
     if extension not in ALLOWED_EXTENSIONS:
         return jsonify({'error': 'Unsupported file type. Please upload a JPG or PNG image.'}), 400
+    try:
+        Image.open(file.stream).verify()
+        file.stream.seek(0)
+    except (UnidentifiedImageError, OSError):
+        return jsonify({'error': 'Invalid image content. Please upload a valid JPG or PNG image.'}), 400
     image_path = os.path.join(UPLOAD_FOLDER, f"{uuid4().hex}{extension}")
     file.save(image_path)
     
@@ -91,4 +97,4 @@ def export():
         )
 
 if __name__ == '__main__':
-    app.run(debug=os.getenv("FLASK_DEBUG", "0") == "1")
+    app.run(debug=False)
