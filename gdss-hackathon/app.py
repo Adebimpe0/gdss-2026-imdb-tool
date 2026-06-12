@@ -41,7 +41,7 @@ def extract():
         return render_template('preview.html', data=data)
     except Exception:
         app.logger.exception("Extraction failed")
-        return jsonify({'error': 'Extraction failed'}), 500
+        return jsonify({'error': 'Image extraction failed. Please ensure the image is valid and readable.'}), 500
     finally:
         # Clean up uploaded file
         if os.path.exists(image_path):

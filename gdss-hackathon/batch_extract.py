@@ -7,7 +7,7 @@ import pandas as pd
 import time
 
 load_dotenv()
-REQUEST_DELAY_SECONDS = 25
+REQUEST_DELAY_SECONDS = int(os.getenv("REQUEST_DELAY_SECONDS", "25"))
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
