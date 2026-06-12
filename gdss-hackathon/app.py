@@ -11,6 +11,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png'}
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
@@ -31,6 +32,9 @@ def extract():
     # Save uploaded image temporarily
     safe_filename = secure_filename(file.filename)
     _, extension = os.path.splitext(safe_filename)
+    extension = extension.lower()
+    if extension not in ALLOWED_EXTENSIONS:
+        return jsonify({'error': 'Unsupported file type. Please upload a JPG or PNG image.'}), 400
     image_path = os.path.join(UPLOAD_FOLDER, f"{uuid4().hex}{extension}")
     file.save(image_path)
     
