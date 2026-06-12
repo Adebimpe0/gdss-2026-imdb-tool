@@ -2,6 +2,7 @@ import pandas as pd
 
 df = pd.read_csv('output_extracted.csv')
 df.columns = df.columns.str.upper().str.strip()
+total_rows = len(df)
 
 # Extract product ID from filename
 df['PRODUCT_ID'] = df['IMAGE_FILE'].str.split('_').str[0]
@@ -26,4 +27,5 @@ print("Done! Saved to output_extracted_filled.csv")
 print(f"\nAfter filling:")
 for field in fields_to_fill:
     filled = (df[field] != '').sum()
-    print(f"{field}: {filled}/169 ({filled/169*100:.1f}%)")
+    fill_pct = (filled / total_rows * 100) if total_rows else 0
+    print(f"{field}: {filled}/{total_rows} ({fill_pct:.1f}%)")

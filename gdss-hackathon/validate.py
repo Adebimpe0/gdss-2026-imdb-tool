@@ -6,6 +6,7 @@ df = pd.read_csv('output_extracted_filled.csv')
 df.columns = df.columns.str.upper().str.strip()
 
 print(f"Loaded {len(df)} rows\n")
+total_rows = len(df)
 
 # ── 1. NORMALIZE ALL TEXT TO UPPERCASE ──────────────────────────────────────
 text_fields = [
@@ -31,7 +32,7 @@ def clean_barcode(val):
 
 df['BARCODE'] = df['BARCODE'].apply(clean_barcode)
 valid_barcodes = (df['BARCODE'] != '').sum()
-print(f"✅ Barcodes validated: {valid_barcodes}/169 valid")
+print(f"✅ Barcodes validated: {valid_barcodes}/{total_rows} valid")
 
 # ── 3. NORMALIZE WEIGHT ──────────────────────────────────────────────────────
 def normalize_weight(val):

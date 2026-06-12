@@ -9,8 +9,8 @@ ground_truth = pd.read_excel('output_results.xlsx')
 extracted.columns = extracted.columns.str.upper().str.strip().str.replace(' ', '_')
 ground_truth.columns = ground_truth.columns.str.upper().str.strip().str.replace(' ', '_')
 
-# Fix double underscore in ground truth packaging column
-ground_truth = ground_truth.rename(columns={'PACKAGING__TYPE': 'PACKAGING_TYPE'})
+# Normalize accidental double-underscore column names
+ground_truth.columns = ground_truth.columns.str.replace(r'_{2,}', '_', regex=True)
 
 # The 13 fields
 fields = [

@@ -7,6 +7,7 @@ import pandas as pd
 import time
 
 load_dotenv()
+REQUEST_DELAY_SECONDS = 25
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -105,7 +106,7 @@ def batch_extract(images_folder, output_csv):
             print(f"  ❌ Failed: {e}")
             failed.append(image_file)
 
-        time.sleep(25)
+        time.sleep(REQUEST_DELAY_SECONDS)
 
     # Save any remaining results
     if results:

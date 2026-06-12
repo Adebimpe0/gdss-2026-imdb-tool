@@ -6,6 +6,8 @@ from extract import extract_from_image
 from export import export_to_csv, export_to_excel
 import os
 import io
+from uuid import uuid4
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -27,7 +29,9 @@ def extract():
         return jsonify({'error': 'No image selected'}), 400
     
     # Save uploaded image temporarily
-    image_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    safe_filename = secure_filename(file.filename)
+    _, extension = os.path.splitext(safe_filename)
+    image_path = os.path.join(UPLOAD_FOLDER, f"{uuid4().hex}{extension}")
     file.save(image_path)
     
     try:
@@ -35,8 +39,9 @@ def extract():
         data = extract_from_image(image_path)
         # Pass extracted data to preview page
         return render_template('preview.html', data=data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    except Exception:
+        app.logger.exception("Extraction failed")
+        return jsonify({'error': 'Extraction failed'}), 500
     finally:
         # Clean up uploaded file
         if os.path.exists(image_path):
@@ -82,4 +87,4 @@ def export():
         )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=os.getenv("FLASK_DEBUG", "0") == "1")
