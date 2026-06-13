@@ -44,6 +44,7 @@ This tool automates retail Item Master Database (IMDB) entry by extracting 13 ke
 6. **Export** — Clean CSV/Excel file ready for database import
 
 ## How to Run Locally
+
 ```bash
 git clone https://github.com/Adebimpe0/gdss-2026-imdb-tool.git
 cd gdss-2026-imdb-tool
@@ -53,16 +54,17 @@ pip install -r requirements.txt
 ```
 
 Create a `.env` file:
-
 GEMINI_API_KEY=your_api_key_here
+
 Run the app:
 ```bash
 python app.py
 ```
 
 Visit `http://127.0.0.1:5000`
-
 ## Future Improvements
 - Duplicate product detection (compare by barcode/brand/weight)
 - Batch upload support
 - Mobile camera integration
+
+
