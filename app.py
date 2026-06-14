@@ -99,6 +99,9 @@ def export():
             as_attachment=True,
             download_name='imdb_data.csv'
         )
+        @app.route('/health')
+def health():
+    return 'OK', 200
 
 if __name__ == '__main__':
     app.run(port=5001, host='0.0.0.0', debug=True)
