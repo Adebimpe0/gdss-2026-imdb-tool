@@ -99,7 +99,7 @@ def export():
             as_attachment=True,
             download_name='imdb_data.csv'
         )
-        @app.route('/health')
+@app.route('/health')
 def health():
     return 'OK', 200
 
