@@ -61,7 +61,7 @@ Run the app:
 python app.py
 ```
 
-Visit `http://127.0.0.1:5001`
+Visit `http://127.0.0.1:5000`
 ## Future Improvements
 - Duplicate product detection (compare by barcode/brand/weight)
 - Batch upload support
