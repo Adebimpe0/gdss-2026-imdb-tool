@@ -52,9 +52,12 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 ```
+Create a `.env` file and add the following environment variable:
 
-Create a `.env` file:
+```env
 GEMINI_API_KEY=your_api_key_here
+```
+
 
 Run the app:
 ```bash
