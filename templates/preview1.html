@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Preview & Edit - IMDB Tool{% endblock %}
 {% block content %}
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-4 mb-5">
     <div class="col-lg-10 col-xl-8">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
-            <div>
-                <h2 class="mb-1">Preview & Edit Extracted Data</h2>
-                <p class="text-muted mb-0">Review the extracted fields before exporting them.</p>
-            </div>
+        <div class="glass-container mb-5 text-center p-4">
+            <h2 class="mb-2 fw-bold text-gradient">Preview & Edit Extracted Data</h2>
+            <p class="text-muted mb-0 fs-5">Review and verify the extracted fields before exporting.</p>
         </div>
         {% for item in data %}
-        <div class="card shadow-sm border-0">
+        <div class="card border-0">
             <div class="card-body p-4 p-md-5">
                 <form action="{{ url_for('export') }}" method="POST">
                     {% set fields = [
@@ -29,20 +27,20 @@
                     ('tagline', 'Tagline')
                     ] %}
 
-                    <div class="row g-3">
+                    <div class="row g-4">
                         {% for field_name, field_label in fields %}
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold" for="{{ field_name }}">{{ field_label }}</label>
-                            <input id="{{ field_name }}" type="text" class="form-control" name="{{ field_name }}"
+                            <label class="form-label fw-semibold text-muted" for="{{ field_name }}">{{ field_label }}</label>
+                            <input id="{{ field_name }}" type="text" class="form-control form-control-lg" name="{{ field_name }}"
                                 value="{{ data.get(field_name, '') }}">
                         </div>
                         {% endfor %}
                     </div>
 
-                    <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
-                        <button type="submit" name="format" value="csv" class="btn btn-success flex-fill">Export as
+                    <div class="d-flex flex-column flex-sm-row gap-3 mt-5">
+                        <button type="submit" name="format" value="csv" class="btn btn-success btn-lg flex-fill shadow-sm">Export as
                             CSV</button>
-                        <button type="submit" name="format" value="excel" class="btn btn-primary flex-fill">Export as
+                        <button type="submit" name="format" value="excel" class="btn btn-primary btn-lg flex-fill shadow-sm">Export as
                             Excel</button>
                     </div>
                 </form>

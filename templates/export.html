@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Export Successful - IMDB Tool{% endblock %}
 {% block content %}
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center" style="min-height: 75vh;">
         <div class="col-md-6">
-            <div class="card p-4 shadow text-center">
-                <div class="mb-3">
-                    <span style="font-size: 60px;">✅</span>
+            <div class="glass-container text-center p-5">
+                <div class="mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-success text-white rounded-circle" style="width: 90px; height: 90px; font-size: 45px; box-shadow: 0 0 25px rgba(25, 135, 84, 0.4);">
+                        ✓
+                    </div>
                 </div>
-                <h2 class="text-success">Export Successful!</h2>
-                <p class="text-muted">Your product data has been exported successfully.</p>
-                <p>The file is ready to be uploaded into your product master database.</p>
-                <a href="/" class="btn btn-primary mt-3">Upload Another Image</a>
+                <h2 class="text-success fw-bold mb-3">Export Successful!</h2>
+                <p class="text-muted fs-5 mb-2">Your product data has been exported successfully.</p>
+                <p class="text-muted mb-5">The file is ready to be uploaded into your product master database.</p>
+                <a href="/" class="btn btn-primary btn-lg px-5 shadow-sm">Upload Another Image</a>
             </div>
         </div>
     </div>

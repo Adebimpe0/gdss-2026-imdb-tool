@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Home - IMDB Tool{% endblock %}
 {% block content %}
-<div class="text-center">
-    <h1 class="mb-3">AI-Driven Image-to-Item Master Data Tool</h1>
-    <p class="lead">Upload product images and extract structured master data automatically.</p>
-    <div class="d-flex justify-content-center gap-2 mt-4">
-        <a href="/extract" class="btn btn-primary">Extract Data</a>
-        <!-- <a href="/export" class="btn btn-outline-secondary">View Extracted</a> -->
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="col-md-9 text-center glass-container">
+        <h1 class="mb-4 display-5 fw-bold text-gradient">AI-Driven Image-to-Item Master Data</h1>
+        <p class="lead mb-5 text-muted fs-4">Upload product images and seamlessly extract structured master data automatically using advanced AI.</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="/extract" class="btn btn-primary btn-lg px-5 shadow-sm">Get Started</a>
+            <!-- <a href="/export" class="btn btn-outline-secondary btn-lg px-5 shadow-sm">View Extracted</a> -->
+        </div>
     </div>
 </div>
 {% endblock %}

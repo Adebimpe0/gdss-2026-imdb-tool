@@ -2,25 +2,25 @@
 {% block title %}Saved Extraction - IMDB Tool{% endblock %}
 {% block content %}
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Saved Extraction</h2>
+        <h2 class="text-gradient fw-bold">Saved Extraction</h2>
         <div>
-            <a href="/export" class="btn btn-outline-primary me-2">Export CSV</a>
-            <a href="/export" class="btn btn-outline-secondary">Export Excel</a>
+            <a href="/export" class="btn btn-primary me-2 shadow-sm">Export CSV</a>
+            <a href="/export" class="btn btn-success shadow-sm">Export Excel</a>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <ul class="list-group">
+    <div class="card border-0 mb-5">
+        <div class="card-body p-4">
+            <ul class="list-group list-group-flush">
                 {% for item in data %}
-                <li class="list-group-item d-flex justify-content-between">
-                    <strong>{{ item }}</strong>
-                    <span>{{ data[item] }}</span>
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3 bg-transparent">
+                    <strong class="text-muted">{{ item }}</strong>
+                    <span class="fw-medium text-dark">{{ data[item] }}</span>
                 </li>
                 {% endfor %}
             </ul>
-            <div class="mt-3">
-                <a href="/extract" class="btn btn-secondary">Edit</a>
+            <div class="mt-4 text-end">
+                <a href="/extract" class="btn btn-outline-secondary px-5">Edit</a>
             </div>
         </div>
     </div>
