@@ -24,7 +24,7 @@ def index():
 def extract():
     if request.method == 'GET':
         """Upload page"""
-        return render_template('upload.html')
+        return render_template('extract.html')
         
     """Receive image, run AI pipeline, return extracted data"""
     if 'image' not in request.files:

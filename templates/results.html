@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="text-gradient fw-bold">Extraction Results</h2>
         <div>
-            <a href="/export" class="btn btn-primary me-2 shadow-sm">Export CSV</a>
-            <a href="/export" class="btn btn-success shadow-sm">Export Excel</a>
+            <a href="/export" class="btn btn-primary me-2 shadow-sm"><i class="bi bi-filetype-csv"></i> Export CSV</a>
+            <a href="/export" class="btn btn-success shadow-sm"><i class="bi bi-filetype-xlsx"></i> Export Excel</a>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
             {% endfor %}
         </div>
         <div class="mt-5 text-end">
-            <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">Save Edits</button>
+            <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm"><i class="bi bi-floppy"></i> Save Edits</button>
         </div>
     </form>
 {% endblock %}
